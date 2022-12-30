@@ -48,3 +48,10 @@ void Test4() {
 	};
 	tab2 = std::move(tab1);
 }
+
+void Test5() {
+	CTab* tab1 = new CTab();
+	CMySmartPointer<CTab> sm1(tab1);
+	CMySmartPointer<CTab> sm2(sm1);
+
+};

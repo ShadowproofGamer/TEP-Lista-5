@@ -99,8 +99,8 @@ void CTable::vPrint() {
 //zad1
 CTable& CTable::operator=(const CTable& pcOther)
 {
-	CTable newCT(pcOther);
 	std::cout << "op= " << std::endl;
+	CTable newCT(pcOther);
 	return newCT;
 }//void CTable::operator=(CTable &pcOther)
 
@@ -136,13 +136,13 @@ CTable::CTable(CTable&& pcOther) {
 
 CTable& CTable::operator=(CTable&& pcOther) 
 {
+	std::cout << "op=&& " << std::endl;
 	s_name = pcOther.s_name;
 	table_size = pcOther.table_size;
 	content = pcOther.content;
 	pcOther.s_name = "";
 	pcOther.table_size = 0;
 	//pcOther.content = NULL;
-	std::cout <<  "op=&& " << std::endl;
 	return(*this);
 };
 

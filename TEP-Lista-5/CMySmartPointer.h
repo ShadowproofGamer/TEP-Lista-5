@@ -1,5 +1,6 @@
 #pragma once
 #include "CRefCounter.h"
+#include <iostream>
 
 template <typename T> class CMySmartPointer
 {
@@ -9,16 +10,19 @@ public:
 		pc_pointer = pcPointer;
 		pc_counter = new CRefCounter();
 		pc_counter->iAdd();
+		std::cout << pc_counter->iGet() << std::endl;
 	}//CMySmartPointer(CSellData *pcPointer)
 	CMySmartPointer(const CMySmartPointer& pcOther)
 	{
 		pc_pointer = pcOther.pc_pointer;
 		pc_counter = pcOther.pc_counter;
 		pc_counter->iAdd();
+		std::cout << pc_counter->iGet() << std::endl;
 	}//CMySmartPointer(const CMySmartPointer &pcOther)
 	~CMySmartPointer()
 	{
 		decrement();
+		//std::cout << pc_counter->iGet << std::endl;
 	}//~CMySmartPointer()
 	T& operator*() { return(*pc_pointer); }
 	T* operator->() { return(pc_pointer); }
@@ -28,6 +32,7 @@ public:
 		pc_pointer = pcOther.pc_pointer;
 		pc_counter = pcOther.pc_counter;
 		pc_counter->iAdd();
+		std::cout << pc_counter->iGet() << std::endl;
 	};
 private:
 	CRefCounter* pc_counter;
